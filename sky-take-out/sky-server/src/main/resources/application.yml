@@ -21,6 +21,20 @@ mybatis:
     #开启驼峰命名
     map-underscore-to-camel-case: true
 
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations:
+    classpath*:mapper/**/*.xml
+  global-config:
+    db-config:
+      #未删除的逻辑值
+      logic-not-delete-value: 1
+      #删除的逻辑值
+      logic-delete-value: 0
+
 logging:
   level:
     com:
