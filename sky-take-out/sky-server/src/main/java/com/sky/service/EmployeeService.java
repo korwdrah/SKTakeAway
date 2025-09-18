@@ -27,4 +27,6 @@ public interface EmployeeService extends IService<Employee> {
     void changeStatus(int status, Long id);
 
     Employee getById(Long id);
+
+    void updateEmployee(EmployeeDTO employeeDTO);
 }

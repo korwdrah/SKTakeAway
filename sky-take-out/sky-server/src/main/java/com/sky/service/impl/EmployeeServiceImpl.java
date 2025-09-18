@@ -101,6 +101,24 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     }
 
     /**
+     * 编辑员工信息
+     *
+     * @param employeeDTO
+     */
+    @Override
+    public void updateEmployee(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+        //设置修改用户名
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        //设置修改时间
+        employee.setUpdateTime(LocalDateTime.now());
+        //需要修改的员工信息
+        employeeMapper.updateById(employee);
+        log.info("员工信息修改成功");
+    }
+
+    /**
      * 员工登录
      *
      * @param employeeLoginDTO
