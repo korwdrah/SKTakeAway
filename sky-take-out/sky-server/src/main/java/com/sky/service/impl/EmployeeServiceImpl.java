@@ -35,6 +35,20 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     private EmployeeMapper employeeMapper;
 
     /**
+     * 根据id查询员工信息
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee getById(Long id) {
+        Employee employee = employeeMapper.selectById(id);
+        //保证隐私
+        employee.setPassword("******");
+        return employee;
+    }
+
+    /**
      * 新增员工
      *
      * @param employeeDTO
