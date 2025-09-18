@@ -66,6 +66,27 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     }
 
     /**
+     * 修改员工状态
+     *
+     * @param status
+     * @param id
+     */
+    @Override
+    public void changeStatus(int status, Long id) {
+        //修改员工状态
+        Employee empCur = employeeMapper.selectById(id);
+        empCur.setStatus(status);
+        //员工存在
+        if(empCur != null){
+            employeeMapper.updateById(empCur);
+            log.info("员工状态修改成功");
+        }
+        else {
+            log.info("员工不存在");
+        }
+    }
+
+    /**
      * 员工登录
      *
      * @param employeeLoginDTO
