@@ -61,12 +61,12 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         BeanUtils.copyProperties(employeeDTO, employee);
         employee.setStatus(StatusConstant.ENABLE);
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
         //TODO 设置创建人和创建人id 从ThreadLocal中获取当前线程的登陆人员信息
-        Long userId = BaseContext.getCurrentId();
-        employee.setCreateUser(userId);
-        employee.setUpdateUser(userId);
+//        Long userId = BaseContext.getCurrentId();
+//        employee.setCreateUser(userId);
+//        employee.setUpdateUser(userId);
 
         employeeMapper.insert(employee);
     }
@@ -110,10 +110,10 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
     public void updateEmployee(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
-        //设置修改用户名
-        employee.setUpdateUser(BaseContext.getCurrentId());
-        //设置修改时间
-        employee.setUpdateTime(LocalDateTime.now());
+//        //设置修改用户名
+//        employee.setUpdateUser(BaseContext.getCurrentId());
+//        //设置修改时间
+//        employee.setUpdateTime(LocalDateTime.now());
         //需要修改的员工信息
         employeeMapper.updateById(employee);
         log.info("员工信息修改成功");
