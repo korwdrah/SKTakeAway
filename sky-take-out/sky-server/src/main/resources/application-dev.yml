@@ -9,3 +9,9 @@ sky:
   mybatis-plus:
     configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  tencentoss:
+    secret-id: AKIDoV0JOGuOehW9YjhRzKSN6b9TaVFl392j
+    secret-key: WpxrY2LQHuJXXJsEMHzUpyucAGH1Yu2x
+    bucket-name: nicebro-1309495005
+    region: ap-guangzhou
+
