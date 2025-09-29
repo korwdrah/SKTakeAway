@@ -117,13 +117,6 @@
             <version>3.5.14</version>
         </dependency>
 
-<!--        腾讯云OSS SDK引入-->
-        <dependency>
-            <groupId>com.qcloud</groupId>
-            <artifactId>cos_api</artifactId>
-            <version>5.6.227</version>
-        </dependency>
-
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
