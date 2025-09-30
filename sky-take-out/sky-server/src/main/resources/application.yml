@@ -56,4 +56,3 @@ sky:
     secret-key: ${sky.tencentoss.secret-key}
     bucket-name: ${sky.tencentoss.bucket-name}
     region: ${sky.tencentoss.region}
-    content-type: ${sky.tencentoss.content-type}

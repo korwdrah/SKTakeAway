@@ -8,11 +8,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "sky.tencentoss")
 @Data
 public class TencentOssProperties {
-
     private String secretId;
     private String secretKey;
     private String bucketName;
     private String region;
-    private String contentType;
-
 }

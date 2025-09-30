@@ -14,5 +14,4 @@ sky:
     secret-key: WpxrY2LQHuJXXJsEMHzUpyucAGH1Yu2x
     bucket-name: nicebro-1309495005
     region: ap-guangzhou
-    content-type: application/octet-stream
 
