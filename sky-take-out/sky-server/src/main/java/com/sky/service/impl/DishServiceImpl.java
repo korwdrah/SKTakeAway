@@ -1,6 +1,7 @@
 package com.sky.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,6 +13,7 @@ import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
 import com.sky.result.PageResult;
 import com.sky.service.DishService;
+import com.sky.vo.DishVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +32,10 @@ public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements Di
 
     @Override
     public PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO) {
-        //分页查询
-        String dishName = dishPageQueryDTO.getName();
-        Integer categoryId = dishPageQueryDTO.getCategoryId();
-        Page<Dish> dishPage = new Page<>(dishPageQueryDTO.getPage(), dishPageQueryDTO.getPageSize());
-        Page<Dish> dishPageInfo = dishMapper.selectPage(dishPage,new LambdaQueryWrapper<Dish>().like(StringUtils.isNotBlank(dishName),Dish::getName, dishName).eq(categoryId!=null,Dish::getCategoryId, categoryId));
-        return new PageResult(dishPageInfo.getTotal(), dishPageInfo.getRecords());
+        //分页查询 这里直接用MP的分页查询的封装对象进行查询，
+        Page<DishVO> dishPage = new Page<>(dishPageQueryDTO.getPage(), dishPageQueryDTO.getPageSize());
+        IPage<DishVO> page = dishMapper.pageQuery(dishPage, dishPageQueryDTO);
+        return new PageResult(page.getTotal(), page.getRecords());
     }
 
     @Transactional

@@ -30,7 +30,7 @@ public class DishController {
 
     @GetMapping("/page")
     @ApiOperation("菜品分页查询")
-    public Result<PageResult> page( DishPageQueryDTO dishPageQueryDTO) {
+    public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO) {
         PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);
         return Result.success(pageResult);
     }
